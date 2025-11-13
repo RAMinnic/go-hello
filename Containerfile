@@ -1,9 +1,10 @@
 # Stage 1: BUilding Application
-FROM node:20 AS builder
+FROM golang:1.22 AS builder
 WORKDIR /app
 COPY . .
-RUN npm install && npm run build
+RUN go build -o myapp main.go
 
 # Stage 2: Serve the applicaiton
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
+FROM alpine:latest
+COPY --from=builder /app/dist /usr/local/bin/myapp
+CMD ["myapp"]
