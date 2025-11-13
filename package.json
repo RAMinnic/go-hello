@@ -1,0 +1,11 @@
+{
+
+"name": "node-hello",
+"version": "1.0.0",
+
+"scripts": {
+    "build": "mkdir -p dist && echo '<h1> Hello, World from Node + Podman!</h1>' > index.html"
+}
+
+
+}
